@@ -36,8 +36,10 @@
   </div>
 
   {{-- navbar here --}}
+  @include ('admin.layouts.navbar')
   
   {{-- sidebar here --}}
+  @include ('admin.layouts.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -63,6 +65,7 @@
   </div>
 
   {{-- footer here --}}
+@include('admin.layouts.footer')
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
