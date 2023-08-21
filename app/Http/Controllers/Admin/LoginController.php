@@ -32,4 +32,13 @@ class LoginController extends Controller
         dd($credentials);
     }
 
+    public function logout(Request $request){
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regeneratetoken();
+
+        return redirect()->route('admin.login');
+    }
+
 }
