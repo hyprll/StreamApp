@@ -19,4 +19,12 @@ class Transaction extends Model
         'status'
     ];
 
+    public function package(){
+        return $this->belongsTo(Package::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(Package::class);
+    }
+
 }
