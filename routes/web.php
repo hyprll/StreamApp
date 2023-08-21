@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Member\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,11 +38,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.auth']], function(){
         Route::delete('/destroy/{id}', [MovieController::class, 'destroy'])->name('admin.movie.destroy');
 
     });
-   
-
-
 
 });
+
+Route::view('/','index');
+Route::get('/register', [RegisterController::class,'index'])->name('member.register');
 
 
 
