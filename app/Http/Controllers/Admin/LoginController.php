@@ -12,22 +12,24 @@ class LoginController extends Controller
         return view('admin.auth');
     }
 
-    public function authenticate(Request $request){
+    public function authenticate(Request $request)
+    {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required'
         ]);
 
         $credentials = $request->only('email', 'password');
         $credentials['role'] = 'admin';
 
-        if(Auth::attempt($credentials)){
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
             return redirect()->route('admin.movie');
         }
 
         return back()->withErrors([
-            'error' => 'Your cardentials are wrong'
+            'error' => 'Your credentials are wrong'
         ])->withInput();
         dd($credentials);
     }

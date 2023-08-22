@@ -12,14 +12,14 @@
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
     </style>
 
-    <script src="{{asset('stream/assets/script/tailwind-config.js') }}"></script>
+    <script src="{{ asset('stream/assets/script/tailwind-config.js') }}"></script>
 </head>
 
 <body class="bg-stream-dark">
 
     <div class="relative">
         <div class="hidden lg:block fixed">
-            <img src="{{asset('stream/assets/images/banner.png')}}" class="max-h-screen" alt="stream" />
+            <img src="{{ asset('stream/assets/images/banner.png') }}" class="max-h-screen" alt="stream" />
         </div>
     </div>
 
@@ -27,7 +27,7 @@
 
         <!-- Ornament -->
         <span class="fixed -z-10 top-0">
-            <img src="{{asset('stream/assets/images/pricing_ornament.svg')}}" class="h-screen w-screen" alt="stream" />
+            <img src="{{ asset('stream/assets/images/pricing_ornament.svg') }}" class="h-screen w-screen" alt="stream" />
         </span>
         <!-- ./ -->
 
@@ -36,7 +36,7 @@
                 <!-- Logo -->
                 <div class=" flex flex-row justify-center items-center">
                     <a href="/index.html" class="block">
-                        <img src="{{asset('stream/assets/images/stream.svg')}}" alt="stream" />
+                        <img src="{{ asset('stream/assets/images/stream.svg') }}" alt="stream" />
                     </a>
                 </div>
 
@@ -50,57 +50,55 @@
 
                     <!-- Form login -->
                     <section class="w-11/12 max-w-[460px]">
-                        <form action="{{route('member.register.store')}}" method= "POST" class="mt-[70px] flex flex-col bg-white p-[30px] rounded-2xl gap-6">
+                        <form action="{{ route('member.register.store') }}" method="POST" class="mt-[70px] flex flex-col bg-white p-[30px] rounded-2xl gap-6">
                             @csrf
                             <div class="form-input flex flex-col gap-3">
                                 <label for="name" class="text-base font-medium text-stream-dark">Name</label>
                                 <input type="text"
-                                    name = "name"
+                                    name="name"
                                     class="rounded-full py-3 pr-3 pl-6 text-stream-dark placeholder:text-stream-gray placeholder:font-normal font-medium outline outline-stream-gray outline-1 text-base focus:outline-indigo-600 input-stream"
-                                    placeholder="Your complete name" 
-                                    value="{{ old('name') }}"/>
-                                   
-                            @error('name')
+                                    placeholder="Your complete name"
+                                    value="{{ old('name') }}" />
+                                @error('name')
                                     <div style="color:red">{{ $message }}</div>
-                            @enderror
+                                @enderror
                             </div>
                             <div class="form-input flex flex-col gap-3">
                                 <label for="email" class="text-base font-medium text-stream-dark">Email Address</label>
                                 <input type="email"
-                                    name = "email"
+                                    name="email"
                                     class="rounded-full py-3 pr-3 pl-6 text-stream-dark placeholder:text-stream-gray placeholder:font-normal font-medium outline outline-stream-gray outline-1 text-base focus:outline-indigo-600 input-stream"
                                     placeholder="Your email address" 
-                                    value="{{ old('email') }}"
-                                    />
-                             @error('email')
+                                    value="{{ old('email') }}"/>
+                                @error('email')
                                     <div style="color:red">{{ $message }}</div>
-                            @enderror
+                                @enderror
                             </div>
-
                             <div class="form-input flex flex-col gap-3">
-                                <label for="phne_number" class="text-base font-medium text-stream-dark">Phone Number</label>
+                                <label for="phone_number" class="text-base font-medium text-stream-dark">Phone Number</label>
                                 <input type="text"
-                                    name = "phone_number"
+                                    name="phone_number"
                                     class="rounded-full py-3 pr-3 pl-6 text-stream-dark placeholder:text-stream-gray placeholder:font-normal font-medium outline outline-stream-gray outline-1 text-base focus:outline-indigo-600 input-stream"
                                     placeholder="Your phone number"
                                     value="{{ old('phone_number') }}" />
-                            @error('phone_number')
+                                @error('phone_number')
                                     <div style="color:red">{{ $message }}</div>
-                            @enderror
+                                @enderror
                             </div>
-
                             <div class="form-input flex flex-col gap-3">
                                 <label for="password" class="text-base font-medium text-stream-dark">Password</label>
                                 <input type="password"
-                                    name = "password"
+                                    name="password"
                                     class="rounded-full py-3 pr-3 pl-6 text-stream-dark placeholder:text-stream-gray placeholder:font-normal font-medium outline-stream-gray outline outline-1 text-base focus:outline-indigo-600 input-stream"
-                                    placeholder="Your password" 
-                                    value="{{ old('password') }}"/>
-                            @error('password')
+                                    placeholder="Your password"
+                                    value="{{ old('password') }}" />
+                                @error('password')
                                     <div style="color:red">{{ $message }}</div>
-                            @enderror
+                                @enderror
                             </div>
-                           
+                            @error('credentials')
+                                    <div style="color:red">{{ $message }}</div>
+                                @enderror
                             <button type="submit" class="bg-indigo-600 rounded-full py-3 mt-4 text-center">
                                 <span class="font-semibold text-white text-base">Continue</span>
                             </button>
@@ -113,7 +111,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="{{asset('stream/assets/script/script.js')}}"></script>
+    <script src="{{ asset('stream/assets/script/script.js') }}"></script>
 </body>
 
 </html>
