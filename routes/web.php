@@ -8,7 +8,9 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
 use App\Http\Controllers\Member\DashboardController;
-
+use App\Http\Controllers\Member\MovieController as MemberMovieController;
+use App\Http\Controllers\Member\PricingController;
+ 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,12 +49,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.auth']], function(){
 
 });
 
+Route::get('/pricing', [PricingController::class, 'index'])->name('pricing');
+
 Route::view('/','index');
 Route::get('/register', [RegisterController::class,'index'])->name('member.register');
 Route::post('/register', [RegisterController::class,'store'])->name('member.register.store');
 
 Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
     Route::get('/', [DashboardController::class, 'index'])->name('member.dashboard');
+
+    Route::get('/logout', [MemberLoginController::class, 'logout'])->name('member.logout');
+
+    Route::get('movie/{id}', [MemberMovieController::class, 'show'])->name('member.movie.detail');
+
 });
 
 
